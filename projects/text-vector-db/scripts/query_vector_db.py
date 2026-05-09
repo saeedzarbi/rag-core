@@ -27,8 +27,20 @@ def main() -> None:
     p.add_argument("query", help="Query text")
     args = p.parse_args()
 
+    persist = args.persist_dir.expanduser().resolve()
+    if not persist.is_dir():
+        print(
+            f"Error: vector store directory not found: {persist}\n\n"
+            "Build the index first (from this project directory):\n"
+            "  python3 scripts/build_vector_db.py\n\n"
+            "Put .txt files under data/docs/ first. If you used a custom --persist-dir when building,\n"
+            "pass the same path here: --persist-dir /path/to/your/store",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     results = query_index(
-        persist_dir=args.persist_dir,
+        persist_dir=persist,
         collection_name=args.collection,
         model_name=args.model,
         query=args.query,

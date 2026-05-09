@@ -100,8 +100,11 @@ def query_index(
     top_k: int = 5,
 ) -> list[IndexedChunk]:
     persist_dir = Path(persist_dir)
-    if not persist_dir.exists():
-        raise FileNotFoundError(f"persist_dir does not exist: {persist_dir}")
+    if not persist_dir.exists() or not persist_dir.is_dir():
+        raise FileNotFoundError(
+            f"Vector store path is missing or not a directory: {persist_dir}. "
+            "Run indexing first (e.g. scripts/build_vector_db.py) or pass the correct --persist-dir."
+        )
 
     model = SentenceTransformer(model_name)
 

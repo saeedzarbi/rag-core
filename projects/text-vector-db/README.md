@@ -28,6 +28,8 @@ Scripts default `--input-dir` / `--persist-dir` to folders under **`projects/tex
 
 ### 4) Query
 
+Only after **step 3** has created `vectorstore/` (Chroma files on disk):
+
 ```bash
 cd projects/text-vector-db
 python scripts/query_vector_db.py "How does access policy work?"
