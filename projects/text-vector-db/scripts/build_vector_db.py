@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
-from rag_core.vector_db import index_texts
-
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_SRC = _PROJECT_ROOT / "src"
+if _SRC.is_dir():
+    _p = str(_SRC.resolve())
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
+from rag_core.vector_db import index_texts
 
 
 def main() -> None:

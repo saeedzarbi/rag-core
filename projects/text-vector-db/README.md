@@ -8,6 +8,7 @@ Build a **persistent** vector database from internal `.txt` documents using **Py
 - `data/docs/**/*.txt`
 
 ### 2) Install Python
+
 Windows: install Python 3.10+ from `https://www.python.org/downloads/windows/`
 
 ### 3) Install deps and build the index
@@ -19,7 +20,9 @@ python -m pip install -e .
 python scripts/build_vector_db.py --input-dir data/docs --persist-dir vectorstore
 ```
 
-The package exposes the Python module **`rag_core`** (under `src/`), not **`src`** — run `pip install -e .` once so imports work.
+**Imports:** Scripts add `projects/text-vector-db/src` to `sys.path`, so **`python scripts/query_vector_db.py`** runs even **without** `pip install -e .`. Prefer `pip install -e .` when you import `rag_core` from notebooks or other code.
+
+Always install **`chromadb`** and **`sentence-transformers`** into the **same** venv you run with (`which python3` / `python3 -m pip -V` should point inside `venv/`).
 
 Scripts default `--input-dir` / `--persist-dir` to folders under **`projects/text-vector-db/`**, even if you run them from `scripts/` (for example after `cd scripts`, `python3 query_vector_db.py "..."` still points at the project `vectorstore/`).
 
