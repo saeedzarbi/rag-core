@@ -1,0 +1,31 @@
+# text-vector-db
+
+Build a **persistent** vector database from internal `.txt` documents using **Python** + **Chroma**.
+
+## Usage
+
+### 1) Put your internal text files here
+- `data/docs/**/*.txt`
+
+### 2) Install Python
+Windows: install Python 3.10+ from `https://www.python.org/downloads/windows/`
+
+### 3) Install deps and build the index
+
+```bash
+cd projects/text-vector-db
+python -m pip install -r requirements.txt
+python -m pip install -e .
+python scripts/build_vector_db.py --input-dir data/docs --persist-dir vectorstore
+```
+
+### 4) Query
+
+```bash
+cd projects/text-vector-db
+python scripts/query_vector_db.py "How does access policy work?"
+```
+
+## Output
+- The persistent DB is stored under `vectorstore/` (inside this project directory).
+
