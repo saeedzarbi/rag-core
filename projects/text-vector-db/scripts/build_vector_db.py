@@ -5,11 +5,23 @@ from pathlib import Path
 
 from rag_core.vector_db import index_texts
 
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 def main() -> None:
     p = argparse.ArgumentParser(description="Build a persistent Chroma vector DB from .txt files.")
-    p.add_argument("--input-dir", type=Path, default=Path("data/docs"), help="Directory with .txt files.")
-    p.add_argument("--persist-dir", type=Path, default=Path("vectorstore"), help="Chroma persistence directory.")
+    p.add_argument(
+        "--input-dir",
+        type=Path,
+        default=_PROJECT_ROOT / "data/docs",
+        help="Directory with .txt files.",
+    )
+    p.add_argument(
+        "--persist-dir",
+        type=Path,
+        default=_PROJECT_ROOT / "vectorstore",
+        help="Chroma persistence directory.",
+    )
     p.add_argument("--collection", default="internal_texts", help="Chroma collection name.")
     p.add_argument("--model", default="sentence-transformers/all-MiniLM-L6-v2", help="Embedding model name.")
     p.add_argument("--glob", default="**/*.txt", help="Glob for input files (relative to input-dir).")

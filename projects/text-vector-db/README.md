@@ -19,6 +19,10 @@ python -m pip install -e .
 python scripts/build_vector_db.py --input-dir data/docs --persist-dir vectorstore
 ```
 
+The package exposes the Python module **`rag_core`** (under `src/`), not **`src`** — run `pip install -e .` once so imports work.
+
+Scripts default `--input-dir` / `--persist-dir` to folders under **`projects/text-vector-db/`**, even if you run them from `scripts/` (for example after `cd scripts`, `python3 query_vector_db.py "..."` still points at the project `vectorstore/`).
+
 ### 4) Query
 
 ```bash
