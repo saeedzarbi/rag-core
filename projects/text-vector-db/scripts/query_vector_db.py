@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from rag_core.vector_db import query_index
+from src.rag_core.vector_db import query_index
 
 
 def main() -> None:
