@@ -122,4 +122,3 @@ def query_index(
     for i, doc, meta in zip(ids, documents, metadatas):
         out.append(IndexedChunk(id=i, document=doc, metadata=meta))
     return out
-

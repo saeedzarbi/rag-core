@@ -47,3 +47,6 @@ data/raw/
 artifacts/
 outputs/
 
+# Chroma / vector stores (per sub-project)
+**/vectorstore/
+

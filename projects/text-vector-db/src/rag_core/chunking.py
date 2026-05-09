@@ -40,4 +40,3 @@ def chunk_text(
         start += step
 
     return chunks
-
